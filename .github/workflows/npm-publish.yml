@@ -1,25 +1,21 @@
 name: Publish package to npm 📦
-on:
-  push:
-    branches:
-      - main
+on: [push]
+
 jobs:
-  npm-publish:
-    name: Publish package 📢
-    runs-on: ubuntu-latest
+release:
+    name: Install dependencies
+    runs-on: ubuntu-18.04
     steps:
-      - name: Checkout repository 💻
-        uses: actions/checkout@v2
-      - name: Publish if version has been updated 🚀
-        uses: pascalgn/npm-publish-action@1.3.7
+    - name: Checkout repository 💻
+      uses: actions/checkout@v2
+    - name: Setup Node.js 📳
+        uses: actions/setup-node@v1
         with:
-          tag_name: 'v%s'
-          tag_message: 'v%s'
-          create_tag: 'true'
-          commit_pattern: "^Release (\\S+)"
-          workspace: '.'
-          publish_command: 'npm publish'
-          publish_args: '--non-interactive'
+        node-version: 12
+    - name: Install dependencies ⬇
+        run: yarn install
+    - name: Release package 📢
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} #
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm run semantic-release
