@@ -11,7 +11,7 @@ export const ExampleComponent = ({ text, className }: Props) => {
 }
 
 export const ExampleComponentStyled = styled(ExampleComponent)`
-  background-color: tomato;
+  background-color: CornflowerBlue;
   margin: 2em;
   padding: 0.5em;
   border: 2px solid #000;
