@@ -8,7 +8,7 @@
     "type": "git",
     "url": "git+https://github.com/daniknewgarden/exo-ui.git"
   },
-  "publishConfig": { "access": "public", "branches": ["main"] },
+  "publishConfig": { "access": "public", "branches": ["main"], "tag": "v1-latest" },
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
