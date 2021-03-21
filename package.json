@@ -1,6 +1,6 @@
 {
   "name": "@daniknewgarden/exo-design-system",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "React library of accessible components",
   "author": "daniknewgarden",
   "license": "MIT",
@@ -8,7 +8,13 @@
     "type": "git",
     "url": "git+https://github.com/daniknewgarden/exo-ui.git"
   },
-  "publishConfig": { "access": "public", "branches": ["main"], "tag": "v1-latest" },
+  "bugs": {
+    "url": "https://github.com/daniknewgarden/exo-ui/issues"
+  },
+  "homepage": "https://github.com/daniknewgarden/exo-ui#readme",
+  "directories": {
+    "example": "example"
+  },
   "main": "dist/index.js",
   "module": "dist/index.modern.js",
   "source": "src/index.tsx",
@@ -67,12 +73,5 @@
   "dependencies": {
     "@types/styled-components": "^5.1.9",
     "styled-components": "^5.2.1"
-  },
-  "bugs": {
-    "url": "https://github.com/daniknewgarden/exo-ui/issues"
-  },
-  "homepage": "https://github.com/daniknewgarden/exo-ui#readme",
-  "directories": {
-    "example": "example"
   }
 }
