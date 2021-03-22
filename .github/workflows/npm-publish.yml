@@ -1,5 +1,7 @@
 name: Publish library to npm 📦
-on: [push]
+on: 
+  release:
+    types: [published]
 jobs:
   # Run build and tests
   build:
