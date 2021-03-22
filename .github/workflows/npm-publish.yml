@@ -17,6 +17,7 @@ jobs:
           cmd: test # will run `yarn test` command
   # Publish to npm
   publish:
+    needs: build
     name: Publish 📢
     runs-on: ubuntu-latest
     steps:
