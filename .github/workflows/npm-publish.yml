@@ -1,11 +1,23 @@
-name: Node.js Package
-on:
-  push:
-    branches: [main]
-  pull_request:
-    branches: [main]
+name: Publish library to npm 📦
+on: [push]
 jobs:
+  # Run build and tests
   build:
+    name: Build and test 🏗
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          name: Install dependencies 📥
+          cmd: install # will run `yarn install` command
+      - uses: borales/actions-yarn@v2.0.0
+        with:
+          name: Run tests 🧪
+          cmd: test # will run `yarn test` command
+  # Publish to npm
+  publish:
+    name: Publish 🚀
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,7 +28,9 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           # Defaults to the user or organization that owns the workflow file
           scope: '@daniknewgarden'
+      - name: Install dependencies 📥
       - run: yarn
+      - name: Final publish 📢
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
