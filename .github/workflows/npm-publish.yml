@@ -1,10 +1,11 @@
-name: Publish library to npm 📦
+name: Node.js Package
 on:
-  release:
-    types: [published]
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 jobs:
   build:
-    name: Build and test 🏗
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -15,11 +16,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           # Defaults to the user or organization that owns the workflow file
           scope: '@daniknewgarden'
-      - name: Install dependencies 📦
       - run: yarn
-      - name: Test code 🧪
-      - run: yarn test
-      - name: Publish library 📢
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
