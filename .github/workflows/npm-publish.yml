@@ -17,7 +17,7 @@ jobs:
           cmd: test # will run `yarn test` command
   # Publish to npm
   publish:
-    name: Publish 🚀
+    name: Publish 📢
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -28,7 +28,6 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           # Defaults to the user or organization that owns the workflow file
           scope: '@daniknewgarden'
-      - name: Final publish 📢
       - run: yarn
       - run: yarn publish
         env:
