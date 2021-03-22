@@ -1,5 +1,7 @@
 name: Publish library to npm 📦
-on: [push]
+on: 
+  release:
+    types: [published]
 jobs:
   # Run build and tests
   build:
@@ -17,7 +19,8 @@ jobs:
           cmd: test # will run `yarn test` command
   # Publish to npm
   publish:
-    name: Publish 🚀
+    needs: build
+    name: Publish 📢
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -28,9 +31,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
           # Defaults to the user or organization that owns the workflow file
           scope: '@daniknewgarden'
-      - name: Install dependencies 📥
       - run: yarn
-      - name: Final publish 📢
       - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
