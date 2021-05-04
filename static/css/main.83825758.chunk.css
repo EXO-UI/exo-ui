@@ -1,3 +1,20 @@
+@import url(https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap);
+body {
+  font-family: 'Inter', sans-serif;
+
+  --color-text: #fff;
+  --color-main: #2f63fd;
+  --color-darker: #254eda;
+  --color-lighter: #6690ff;
+  --color-disabled: #e3e4eb;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    --color-main: #517dff;
+  }
+}
+
 .storybook-button {
   font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 700;
@@ -130,4 +147,4 @@ li {
 }
 
 
-/*# sourceMappingURL=main.78b90356.chunk.css.map*/
+/*# sourceMappingURL=main.83825758.chunk.css.map*/
