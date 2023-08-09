@@ -1,0 +1,21 @@
+# Workflow name
+name: 'Storybook publish to Chromatic'
+
+# Event for the workflow
+on: push
+
+# List of jobs
+jobs:
+  chromatic-deployment:
+    # Operating System
+    runs-on: ubuntu-latest
+    # Job steps
+    steps:
+      - uses: actions/checkout@v1
+      - uses: pnpm/action-setup@v2.4.0
+      - name: Install dependencies 📥
+        run: pnpm install
+      - name: Publish to Chromatic 💭
+        uses: chromaui/action@v1
+        with:
+          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}

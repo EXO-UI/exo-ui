@@ -1,8 +1,9 @@
 {
   "name": "exo-ui",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.1.1",
   "type": "module",
+  "packageManager": "pnpm@7.5.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -30,6 +31,7 @@
     "@typescript-eslint/eslint-plugin": "^6.0.0",
     "@typescript-eslint/parser": "^6.0.0",
     "@vitejs/plugin-react-swc": "^3.3.2",
+    "chromatic": "^6.21.0",
     "eslint": "^8.45.0",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.3",
@@ -38,5 +40,6 @@
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
     "vite-plugin-dts": "^3.5.1"
-  }
+  },
+  "_id": "exo-ui@1.1.1"
 }

@@ -3,5 +3,5 @@ interface ButtonProps {
 }
 
 export function Button({ onClick }: ButtonProps) {
-  return <button onClick={onClick}>On click</button>;
+  return <button onClick={onClick}>Click me</button>;
 }
