@@ -1,5 +1,5 @@
 ---
-name: Development changes
+name: Development changes template
 about: For requesting a changes related to toolkit, library development
 title: Dev changes
 labels: tooling
