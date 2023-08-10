@@ -1,19 +1,20 @@
-# Workflow name
-name: 'Testing'
-
-# Event for the workflow
+name: Testing
 on: push
-
-# List of jobs
 jobs:
   unit-testing:
-    # Operating System
+    name: Unit tests
     runs-on: ubuntu-latest
-    # Job steps
     steps:
       - uses: actions/checkout@v1
       - uses: pnpm/action-setup@v2.4.0
+      - name: Cache node_modules 📁
+        uses: actions/cache@v3
+        id: cache-primes
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('pnpm-lock.yaml') }}
       - name: Install dependencies 📥
+        if: steps.cache-primes.outputs.cache-hit != 'true'
         run: pnpm install
       - name: Run unit tests 🚧
         run: pnpm vitest --run

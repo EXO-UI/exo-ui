@@ -1,21 +1,69 @@
-# Workflow name
-name: 'Storybook publish to Chromatic'
-
-# Event for the workflow
+name: Deploy Storybook to Chromatic and test using tests runner
 on: push
-
-# List of jobs
 jobs:
-  chromatic-deployment:
-    # Operating System
+
+  setup:
+    name: Setup 🔨
     runs-on: ubuntu-latest
-    # Job steps
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2
+      - uses: actions/setup-node@v3
+        with:
+          cache: 'pnpm'
+      - name: Cache node_modules 📁
+        uses: actions/cache@v3
+        id: cache-primes
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('pnpm-lock.yaml') }}
+      - name: Install dependencies 📥
+        if: steps.cache-primes.outputs.cache-hit != 'true'
+        run: pnpm install
+
+  chromatic-deployment:
+    name: Build & Deploy 🚀
+    runs-on: ubuntu-latest
+    needs: setup
+    outputs:
+      url: ${{ steps.chromatic.outputs.storybookUrl }}
     steps:
       - uses: actions/checkout@v1
       - uses: pnpm/action-setup@v2.4.0
-      - name: Install dependencies 📥
-        run: pnpm install
-      - name: Publish to Chromatic 💭
-        uses: chromaui/action@v1
+      - uses: actions/setup-node@v3
         with:
+          cache: 'pnpm'
+      - name: Cache node_modules 📁
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('pnpm-lock.yaml') }}
+      - name: Publish Storybook to Chromatic 💭
+        uses: chromaui/action@v1
+        id: chromatic
+        with:
+          buildScriptName: storybook:build
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+
+  storybook-tests-runner:
+    name: Storybook tests runner 🧪
+    needs: [setup, chromatic-deployment]
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: pnpm/action-setup@v2.4.0
+      - uses: actions/setup-node@v3
+        with:
+          cache: 'pnpm'
+      - name: Cache node_modules 📁
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('pnpm-lock.yaml') }}
+      - name: Install Playwright 🧪
+        run: pnpx playwright install --with-deps
+      - name: Run tests 👨‍🔬👩‍🔬
+        run: pnpm storybook:test
+        env:
+          TARGET_URL: '${{ needs.chromatic-deployment.outputs.url }}'
