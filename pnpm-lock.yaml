@@ -3,6 +3,7 @@ lockfileVersion: 5.4
 specifiers:
   '@commitlint/cli': ^17.7.1
   '@commitlint/config-conventional': ^17.7.0
+  '@emotion/eslint-plugin': ^11.11.0
   '@emotion/react': ^11.11.1
   '@storybook/addon-a11y': ^7.2.2
   '@storybook/addon-essentials': ^7.2.2
@@ -48,6 +49,7 @@ dependencies:
 devDependencies:
   '@commitlint/cli': 17.7.1
   '@commitlint/config-conventional': 17.7.0
+  '@emotion/eslint-plugin': 11.11.0_eslint@8.46.0
   '@emotion/react': 11.11.1_6kgymidexis2l23kiss4by6rqm
   '@storybook/addon-a11y': 7.2.3_ml6diaeoljuxdq7psn5bilsrme
   '@storybook/addon-essentials': 7.2.2_ml6diaeoljuxdq7psn5bilsrme
@@ -1640,6 +1642,15 @@ packages:
       '@emotion/utils': 1.2.1
       '@emotion/weak-memoize': 0.3.1
       stylis: 4.2.0
+    dev: true
+
+  /@emotion/eslint-plugin/11.11.0_eslint@8.46.0:
+    resolution: {integrity: sha512-jCOYqU/0Sqm+g+6D7QuIlG99q8YAF0T7BP98zQF/MPZKfbcm46z5mizXn0YlhZ9AYZfNtZ1DeODXdncYxZzR4Q==}
+    engines: {node: '>=6'}
+    peerDependencies:
+      eslint: 6 || 7 || 8
+    dependencies:
+      eslint: 8.46.0
     dev: true
 
   /@emotion/hash/0.9.1:
