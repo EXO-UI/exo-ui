@@ -8,11 +8,12 @@ We are really appreciate your contributions. Here are some helpful points for to
 You need the following tools to be installed 🔧:
 - `node-js` ([download link](https://nodejs.org/en/download)).
 - `pnpm` ([download link](https://pnpm.io/installation)).
+- `commitizen`, optional, see [commit rules](#commit-rules) ([download link](https://github.com/commitizen/cz-cli)).
 - Your favorite code editor. I'm standing for VSCode (just my preference, hold on 🙀🫸). You need the following plugins:
-   - EditorConfig ([download](https://editorconfig.org/#download)).
-   - ESLint ([download](https://eslint.org/docs/latest/use/integrations#editors)).
-   - Prettier ([download](https://prettier.io/docs/en/editors)).
-   - Vitest (optional, [download](https://vitest.dev/guide/ide.html)).
+   - `EditorConfig` ([download](https://editorconfig.org/#download)).
+   - `ESLint` ([download](https://eslint.org/docs/latest/use/integrations#editors)).
+   - `Prettier` ([download](https://prettier.io/docs/en/editors)).
+   - `Vitest`, optional ([download](https://vitest.dev/guide/ide.html)).
 ### Start development 🛠️:
 Clone repo using ⬇️: `git clone daniknewgarden/exo-ui` <br>
 Install dependencies running 📦️: `pnpm install` <br>
@@ -56,28 +57,41 @@ Here we go. Well done 🤗! Now you can see changes on storybook.
 ## Documentation:
 
 ## Commit rules:
-Good practice of convenient open source project are clear commits. <br>
-To provide it, we could follow some rules and style guide ([more details in this article](https://drbrain.ru/articles/git-commit-message/)). <br>
-**Usually the commit should looks like this:** <br>
-`<type>(<scope>): <subject>`<br>
-I identified the following `types` of commits:
+We are using [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) to keep our commits clean and readable. <br>
+Generally ou commits should look like this:
+```
+<type>[optional scope]: <description>
 
-- `feat`: new functionality or components (example: add Button component).
-- `fix`: some fixes (example: fix Button on click callback).
-- `docs`: docs change (example: add Button docs to storybook).
-- `style`: styles change (example: change Button default radius).
-- `test`: editing or creating new tests (example: add Button unit tests).
-- `build`: changes with build (example: add new package).
-- `chore`: changes, that the user may not see (example: change .gitignore).
-- `refactor`: changes that aren't new functionality or fixes (example: change variable name).
+[optional body]
 
-`scope` is the changed section of the project. For example, it can be directory. <br>
-`subject` is the description of your changes. Please, use only lower case letters, don't use dot at the end.
-
+[optional footer(s)]
+```
+### Making a commit:
+For making a commits easier you can use some automation tool, called [commitizen](https://commitizen-tools.github.io/commitizen/). <br>
+We recommend to install the `commitizen` globally via `npm i -g commitizen`. Then you can use `git cz` to make a commit. <br>
+Otherwise you can use `pnpm cz` to make a semantic commit. <br>
+But we still support the regular way of making a commit via `git commit` command or from your IDE. Just follow the rules of [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/). <br>
+### Commit types:
+We are using the following types:
+- `feat`: for new features.
+- `fix`: for bug fixes.
+- `docs`: for documentation changes.
+- `style`: for changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc).
+- `refactor`: for code changes that neither fixes a bug nor adds a feature.
+- `perf`: for code changes that improves performance.
+- `test`: for adding missing tests or correcting existing tests.
+- `build`: for changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm).
+- `ci`: for changes to our CI configuration files and scripts (example scopes: Travis, Circle, BrowserStack, SauceLabs).
+- `chore`: for other changes that don't modify src or test files.
+- `revert`: for reverting commits.
 ## CI/CD
+In progress 🚧
 
 ## Testing:
+In progress 🚧
 
 ## Code rules:
+In progress 🚧
 
 ## Folders structure:
+In progress 🚧
