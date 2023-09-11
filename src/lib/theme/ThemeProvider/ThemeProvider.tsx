@@ -1,8 +1,8 @@
 import { PropsWithChildren } from "react";
 import { ThemeProvider as EmotionThemeProvider } from "@emotion/react";
-import { ExoLightTheme } from "./exo-light";
-import { ExoDarkTheme } from "./exo-dark";
-import { GlobalTheme } from "./types";
+import { ExoLightTheme } from "../themes/exo-light";
+import { ExoDarkTheme } from "../themes/exo-dark";
+import { GlobalTheme } from "../types";
 
 interface ThemeProviderProps {
   lightTheme?: GlobalTheme;

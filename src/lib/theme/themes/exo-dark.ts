@@ -1,4 +1,4 @@
-import { GlobalTheme } from "./types";
+import { GlobalTheme } from "../types";
 import { themeBase } from "./base";
 
 const lightColor = {
