@@ -1,5 +1,5 @@
 ---
-name: Infrastructure changes template
+name: Infrastructure changes
 about: Changes related to infrastructure, such as CI/CD jobs
 title: 'Infra change:'
 labels: infra
