@@ -7,13 +7,14 @@ const meta: Meta<typeof Button> = {
   component: Button,
   parameters: {
     layout: "centered",
+    controls: { exclude: ["Icon", "reverse"], sort: "requiredFirst" },
   },
   argTypes: {
     children: {
       description: "The content of the button.",
     },
     variant: {
-      options: ["default", "outlined", "rounded", "rounded-outlined"],
+      options: ["default", "outlined", "rounded", "rounded-outlined", "icon"],
       control: { type: "select", default: "default" },
     },
     size: {
@@ -97,16 +98,15 @@ export const DisabledOutlined: Story = {
 export const TextWithIcon: Story = {
   args: {
     children: "Text with icon",
+    reverse: false,
     Icon: (
       <svg width="14" height="10" viewBox="0 0 14 10" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd" d="M8.29289 9.70711C7.90237 9.31658 7.90237 8.68342 8.29289 8.29289L10.5858 6H1C0.447715 6 0 5.55228 0 5C0 4.44772 0.447715 4 1 4H10.5858L8.29289 1.70711C7.90237 1.31658 7.90237 0.683418 8.29289 0.292893C8.68342 -0.0976311 9.31658 -0.0976311 9.70711 0.292893L13.7071 4.29289C14.0976 4.68342 14.0976 5.31658 13.7071 5.70711L9.70711 9.70711C9.31658 10.0976 8.68342 10.0976 8.29289 9.70711Z" fill="white" />
       </svg>
     ),
   },
-  argTypes: {
-    reverse: {
-      control: "boolean",
-    },
+  parameters: {
+    controls: { exclude: ["Icon"] },
   },
 };
 
@@ -125,5 +125,8 @@ export const IconButton: Story = {
     ),
     variant: "icon",
     "aria-label": "Add",
+  },
+  parameters: {
+    controls: { exclude: ["children", "Icon", "reverse"] },
   },
 };
