@@ -7,6 +7,7 @@ const StyledLink = styled.a<LinkProps>`
   font-size: 14px;
   font-weight: 700;
   color: ${({ theme }) => theme.colors.primary.main};
+  text-decoration: none;
 
   cursor: default;
   border-radius: 4px;
@@ -19,9 +20,6 @@ const StyledLink = styled.a<LinkProps>`
   &:focus,
   &:active {
     background-color: ${({ theme }) => theme.colors.background.light[500]};
-  }
-
-  &:focus {
     outline: none;
   }
 `;
