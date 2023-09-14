@@ -8,24 +8,34 @@ const StyledDiv = styled.div`
 `;
 
 describe("ThemeProvider", () => {
-  const theme = { ...ExoLightTheme, colors: { ...ExoLightTheme.colors, primary: { ...ExoLightTheme.colors.primary, main: "rgb(255, 0, 0)" } } };
+  const theme = {
+    ...ExoLightTheme,
+    colors: {
+      ...ExoLightTheme.colors,
+      primary: { ...ExoLightTheme.colors.primary, main: "rgb(255, 0, 0)" },
+    },
+  };
 
   test("renders children with the provided light theme", () => {
     const { getByText } = render(
       <ThemeProvider lightTheme={theme}>
         <StyledDiv>My themed component</StyledDiv>
-      </ThemeProvider>
+      </ThemeProvider>,
     );
 
-    expect(getByText("My themed component")).toHaveStyle("color: rgb(255, 0, 0)");
+    expect(getByText("My themed component")).toHaveStyle(
+      "color: rgb(255, 0, 0)",
+    );
   });
   test("renders children with provided dark theme and dark mode enabled", () => {
     const { getByText } = render(
       <ThemeProvider darkTheme={theme} isDarkMode>
         <StyledDiv>My themed component</StyledDiv>
-      </ThemeProvider>
+      </ThemeProvider>,
     );
 
-    expect(getByText("My themed component")).toHaveStyle("color: rgb(255, 0, 0)");
+    expect(getByText("My themed component")).toHaveStyle(
+      "color: rgb(255, 0, 0)",
+    );
   });
 });

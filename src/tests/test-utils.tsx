@@ -6,7 +6,8 @@ import { ThemeProvider } from "../lib";
 function AllTheProviders({ children }: PropsWithChildren<unknown>) {
   return <ThemeProvider>{children}</ThemeProvider>;
 }
-const customRender = (ui: ReactElement, options?: RenderOptions) => render(ui, { wrapper: AllTheProviders, ...options });
+const customRender = (ui: ReactElement, options?: RenderOptions) =>
+  render(ui, { wrapper: AllTheProviders, ...options });
 
 export * from "@testing-library/react";
 export { customRender as render };
