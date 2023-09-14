@@ -7,6 +7,9 @@ const meta = {
   parameters: {
     layout: "centered",
   },
+  args: {
+    href: "#",
+  },
   argTypes: {
     children: {
       description: "The content of the link.",
