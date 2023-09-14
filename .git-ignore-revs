@@ -1,0 +1,5 @@
+# This rile is created to ignore commits like Prettier formatting, etc. when using the `git blame` command.
+# Example: GitLens history view.
+
+# style: apply prettier rules, re #34
+45689c417134146e7f5036bf4007246fc63df39c

@@ -10,6 +10,15 @@ interface ThemeProviderProps {
   isDarkMode?: boolean;
 }
 
-export function ThemeProvider({ children, lightTheme = ExoLightTheme, darkTheme = ExoDarkTheme, isDarkMode }: PropsWithChildren<ThemeProviderProps>) {
-  return <EmotionThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>{children}</EmotionThemeProvider>;
+export function ThemeProvider({
+  children,
+  lightTheme = ExoLightTheme,
+  darkTheme = ExoDarkTheme,
+  isDarkMode,
+}: PropsWithChildren<ThemeProviderProps>) {
+  return (
+    <EmotionThemeProvider theme={isDarkMode ? darkTheme : lightTheme}>
+      {children}
+    </EmotionThemeProvider>
+  );
 }

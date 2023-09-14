@@ -19,7 +19,7 @@ describe("Button", () => {
     const { getByText } = render(
       <Button onClick={mockFn} disabled>
         Click me
-      </Button>
+      </Button>,
     );
 
     const btnElem = getByText("Click me");
@@ -29,7 +29,9 @@ describe("Button", () => {
   });
 
   test("Should render icon when provided", () => {
-    const { getByTestId } = render(<Button Icon={<div data-testid="icon" />} />);
+    const { getByTestId } = render(
+      <Button Icon={<div data-testid="icon" />} />,
+    );
     const iconElem = getByTestId("icon");
 
     expect(iconElem).toBeInTheDocument();
