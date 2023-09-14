@@ -1,5 +1,12 @@
 name: Deploy Storybook to Chromatic and test using tests runner
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    paths:
+      - 'src/lib/**'
+
 jobs:
 
   setup:
