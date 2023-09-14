@@ -4,8 +4,8 @@ on:
     branches:
       - main
   pull_request:
-    # paths:
-    #   - 'src/lib/**'
+    paths:
+      - 'src/lib/**'
 
 jobs:
 
