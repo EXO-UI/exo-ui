@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-
 import { Button } from "./Button";
 
 const meta: Meta<typeof Button> = {
@@ -9,6 +8,7 @@ const meta: Meta<typeof Button> = {
     layout: "centered",
     controls: { exclude: ["Icon", "reverse"], sort: "requiredFirst" },
   },
+  tags: ["autodocs"],
   argTypes: {
     children: {
       description: "The content of the button.",
@@ -22,7 +22,6 @@ const meta: Meta<typeof Button> = {
       control: { type: "radio", default: "medium" },
     },
   },
-  tags: ["autodocs"],
 };
 
 export default meta;
