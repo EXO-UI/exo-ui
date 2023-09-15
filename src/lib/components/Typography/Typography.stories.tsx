@@ -11,9 +11,39 @@ const meta: Meta<typeof Typography> = {
   argTypes: {
     variant: {
       defaultValue: "body1",
+      control: {
+        type: "select",
+        options: [
+          "display1",
+          "display2",
+          "headline1",
+          "headline2",
+          "headline3",
+          "headline4",
+          "headline5",
+          "headline6",
+          "body1",
+          "body2",
+          "lead",
+        ],
+      },
     },
     element: {
       defaultValue: "p",
+      control: {
+        type: "select",
+        options: [
+          "h1",
+          "h2",
+          "h3",
+          "h4",
+          "h5",
+          "h6",
+          "p",
+          "span",
+          "blockquote",
+        ],
+      },
     },
   },
 };
