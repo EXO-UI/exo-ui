@@ -17,7 +17,7 @@ type Color = {
 type PartialColor = Omit<Color, "600" | "700" | "800" | "900">;
 
 // Font types
-type FontSize =
+export type TypographyVariant =
   | "display1"
   | "display2"
   | "headline1"
@@ -30,6 +30,7 @@ type FontSize =
   | "body1"
   | "body2"
   | "blockquote"
+  | "capitalized"
   | "small"
   | "tiny";
 
@@ -55,8 +56,9 @@ export interface GlobalTheme {
     };
   };
   fonts: {
-    sizes: {
-      [key in FontSize]: string;
+    [key in TypographyVariant]: {
+      fontSize: string;
+      fontWeight: string;
     };
   };
 }
