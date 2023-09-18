@@ -9,22 +9,22 @@ const meta = {
   },
   tags: ["autodocs"],
   args: {
-    size: "extra large",
-    name: "Harry Roberts",
+    size: "extraLarge",
+    initials: "HR",
   },
   argTypes: {
     size: {
       required: true,
-      defaultValue: "extra large",
+      defaultValue: "extraLarge",
       control: {
-        type: "radio",
-        options: ["tiny", "small", "medium", "large", "extra large"],
+        type: "select",
+        options: ["tiny", "small", "medium", "large", "extraLarge"],
       },
     },
     status: {
       control: {
         type: "radio",
-        options: [undefined, "online", "offline"],
+        options: ["active", "inactive"],
       },
     },
   },
@@ -36,13 +36,13 @@ export const Default: Story = {};
 export const Image: Story = {
   args: {
     image:
-      "https://i.pinimg.com/564x/07/33/ba/0733ba760b29378474dea0fdbcb97107.jpg",
+      "https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcR6q1sSJClIv9OuONIcOpFFQUAlbIr6g94oMgsYZp58wkIjaXGF",
   },
 };
 
 export const Status: Story = {
   args: {
-    status: "online",
+    status: "active",
   },
 };
 
