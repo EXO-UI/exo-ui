@@ -1,3 +1,5 @@
+![Exo-cover (2)](https://github.com/daniknewgarden/exo-ui/assets/38109617/7c0a9d1b-3dcd-494f-91fb-001f130b99e1)
+
 # Installation guide (skip for now 🚧):
 
 Currently the package is not released for end user, so we don't need this section.
