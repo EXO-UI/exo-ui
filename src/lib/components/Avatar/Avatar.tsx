@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type AvatarSizes = "extraLarge" | "large" | "medium" | "small" | "tiny";
 type AvatarStatus = "active" | "inactive";
@@ -8,6 +8,7 @@ export interface AvatarProps {
   initials: string;
   size: AvatarSizes;
   image?: string;
+  alt?: string;
   status?: AvatarStatus;
 }
 
@@ -37,13 +38,15 @@ const StyledAvatar = styled.div<Pick<AvatarProps, "size">>`
   color: ${({ theme }) => theme.colors.primary.main};
   font-size: ${({ size }) => fontSize[size]};
   font-weight: 800;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 
   display: grid;
   place-items: center;
-  position: relative;
 `;
 
-const StatusIndicatior = styled.div<Pick<AvatarProps, "status">>`
+const StatusIndicator = styled.div<Pick<AvatarProps, "status">>`
   width: 15%;
   height: 15%;
   border-radius: 50%;
@@ -62,39 +65,41 @@ const AvatarImage = styled.img`
   object-fit: cover;
 `;
 
+const AvatarWrapper = styled.div`
+  position: relative;
+`;
+
 export function Avatar({
   initials,
   size = "extraLarge",
   image,
+  alt = "avatar",
   status,
 }: AvatarProps) {
-  const [isImageValid, setIsImageValid] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
 
-  useEffect(() => {
-    if (image) {
-      new Promise<boolean>((resolve, reject) => {
-        const loadImg = new Image();
-        loadImg.src = image;
-        loadImg.onload = () => {
-          return resolve(loadImg.complete && loadImg.naturalWidth > 1);
-        };
-        loadImg.onerror = () => {
-          return reject(false);
-        };
-      })
-        .then(isValid => {
-          setIsImageValid(isValid);
-        })
-        .catch(() => {
-          setIsImageValid(false);
-        });
-    }
-  }, [image]);
+  const handleImageLoad = () => {
+    console.log("load");
+    setIsImageLoaded(true);
+  };
+  const handleImageError = () => {
+    console.log("error");
+    setIsImageLoaded(false);
+  };
 
   return (
-    <StyledAvatar size={size}>
-      {isImageValid ? <AvatarImage src={image} alt="avatar" /> : initials}
-      {status && <StatusIndicatior status={status} role="status" />}
-    </StyledAvatar>
+    <AvatarWrapper>
+      <StyledAvatar size={size}>
+        <AvatarImage
+          src={image}
+          onLoad={handleImageLoad}
+          onError={handleImageError}
+          style={{ display: isImageLoaded ? "block" : "none" }}
+          alt={alt}
+        />
+        {!isImageLoaded && initials}
+      </StyledAvatar>
+      {status && <StatusIndicator status={status} role="status" />}
+    </AvatarWrapper>
   );
 }
