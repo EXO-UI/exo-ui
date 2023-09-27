@@ -7,9 +7,9 @@ type AvatarStatus = "active" | "inactive";
 export interface AvatarProps {
   initials: string;
   size: AvatarSizes;
-  image?: string;
-  alt?: string;
-  status?: AvatarStatus;
+  image: string;
+  alt: string;
+  status: AvatarStatus;
 }
 
 const sizes: { [key in AvatarSizes]: string } = {
@@ -75,7 +75,7 @@ export function Avatar({
   image,
   alt = "avatar",
   status,
-}: AvatarProps) {
+}: Partial<AvatarProps>) {
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   const handleImageLoad = () => {
