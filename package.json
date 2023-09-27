@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "tsc --noEmit && eslint --ext .js,.ts,.jsx,.tsx --report-unused-disable-directives --max-warnings 0 src/",
     "test": "vitest",
     "preview": "vite preview",
     "storybook:dev": "storybook dev -p 6006",
