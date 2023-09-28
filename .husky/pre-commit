@@ -1,5 +1,24 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+set -e
+
 # Run scripts on changed files
-pnpm lint-staged
+echo -e "🏃 Running pre-commit checks"
+
+# Check if there are any staged files
+staged_files=$(git diff --cached --name-only)
+if [ -n "$staged_files" ]; then
+
+  # Lint staged
+  echo -e "\033[32m>\033[0m Running lint on staged files"
+  pnpm lint-staged
+
+  # Type checks
+  echo -e "\033[32m>\033[0m Running types check"
+  node .husky/scripts/types-check.js
+
+else echo -e "\033[34m→\033[0m No staged files found."
+fi
+
+echo -e "✅ Your commit is now ready! \033[32m↓\033[0m"
