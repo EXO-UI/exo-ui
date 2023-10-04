@@ -30,7 +30,7 @@ You need the following tools to be installed 🔧:
 
 ### Start development 🛠️:
 
-Clone repo using ⬇️: `git clone daniknewgarden/exo-ui` <br>
+Clone repo using ⬇️: `git clone git@github.com:daniknewgarden/exo-ui.git` <br>
 Install dependencies running 📦️: `pnpm install` <br>
 Start dev mode 👩‍💻: `pnpm dev` <br>
 Start Storybook to watch changes 📕: `pnpm storybook:dev` <br>
