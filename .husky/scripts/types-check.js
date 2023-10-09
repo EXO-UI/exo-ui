@@ -24,7 +24,7 @@ exec("git diff --cached --name-only -- '*.ts' '*.tsx'", (_, stdout) => {
   // Run type checks
   const childProcess = exec(typeChecksCommand, (err, stdout) => {
     // On fails the code is 2 and the stdout contains the error
-    if (err.code === 2 && stdout) {
+    if (err && err.code === 2 && stdout) {
       console.log(stdout);
       process.exit(1);
     }
@@ -35,8 +35,9 @@ exec("git diff --cached --name-only -- '*.ts' '*.tsx'", (_, stdout) => {
     if (code === 0) {
       // Type checks completed successfully
       spinner.succeed("Type checks successful!");
+    } else {
+      // Type checks failed
+      spinner.fail("Type checks failed.");
     }
-    // Type checks failed
-    spinner.fail("Type checks failed.");
   });
 });
