@@ -43,7 +43,7 @@ const BadgeIcon = styled.img<Pick<BadgeProps, "size">>`
 `;
 
 const StyledLabel = styled.div<Pick<BadgeProps, "size">>`
-  color: white;
+  color: #f0f0f0;
   font-size: ${({ size }) => (size === "large" ? "12px" : "10px")};
   font-weight: 500;
 
