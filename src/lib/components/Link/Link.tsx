@@ -4,7 +4,7 @@ import { AnchorHTMLAttributes } from "react";
 export interface LinkProps extends AnchorHTMLAttributes<HTMLAnchorElement> {}
 
 const StyledLink = styled.a<LinkProps>`
-  font-size: 14px;
+  font-size: ${({ theme }) => theme.fonts.body1.fontSize}})};
   font-weight: 700;
   color: ${({ theme }) => theme.colors.primary.main};
   text-decoration: none;
