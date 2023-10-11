@@ -79,11 +79,9 @@ export function Avatar({
   const [isImageLoaded, setIsImageLoaded] = useState(false);
 
   const handleImageLoad = () => {
-    console.log("load");
     setIsImageLoaded(true);
   };
   const handleImageError = () => {
-    console.log("error");
     setIsImageLoaded(false);
   };
 
