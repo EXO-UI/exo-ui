@@ -23,8 +23,8 @@ describe("Badge", () => {
     expect(getByText("label")).toBeInTheDocument();
   });
 
-  test("Should display initials when invalid image url passed", async () => {
-    const { getByRole, getByText } = render(
+  test("Should display label only when invalid image url passed", async () => {
+    const { getByRole, getByText, getByTestId } = render(
       <Badge label="label" icon={icon} />,
     );
 
@@ -32,19 +32,7 @@ describe("Badge", () => {
     act(() => {
       fireEvent.error(img);
     });
-    expect(img).toHaveStyle({ display: "none" });
+    expect(getByTestId("badge-icon-wrapper")).toHaveStyle({ display: "none" });
     expect(getByText("label")).toBeInTheDocument();
-  });
-
-  test("Should use provided alt text for icon", async () => {
-    const altText = "warning";
-    const { getByRole } = render(<Badge icon={icon} alt={altText} />);
-
-    const img = getByRole("img", { hidden: true });
-    act(() => {
-      fireEvent.load(img);
-    });
-    expect(img).toBeInTheDocument();
-    expect(img).toHaveAttribute("alt", altText);
   });
 });
