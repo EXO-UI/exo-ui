@@ -1,9 +1,10 @@
 ---
 name: Component request
 about: For requesting a new component or some improvements.
-title: "Component: "
-labels: ""
-assignees: ""
+title: 'Component: '
+labels: ui-component
+assignees: ''
+
 ---
 
 # Context:
