@@ -1,0 +1,18 @@
+name: Get node_modules dependencies 📥
+description: Installs dependencies and caches them for future runs 🚀
+runs:
+  using: "composite"
+  steps:
+    - uses: pnpm/action-setup@v3.0.0
+
+    - name: Cache node_modules 📁
+      uses: actions/cache@v4
+      id: cache-primes
+      with:
+        path: node_modules
+        key: ${{ runner.os }}-node-${{ hashFiles('pnpm-lock.yaml') }}
+
+    - name: Install dependencies 📥
+      if: steps.cache-primes.outputs.cache-hit != 'true'
+      run: pnpm install
+      shell: bash

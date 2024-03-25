@@ -14,19 +14,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2
-      - uses: actions/setup-node@v3
-        with:
-          cache: "pnpm"
-      - name: Cache node_modules 📁
-        uses: actions/cache@v3
-        id: cache-primes
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('pnpm-lock.yaml') }}
+
       - name: Install dependencies 📥
-        if: steps.cache-primes.outputs.cache-hit != 'true'
-        run: pnpm install
+        uses: ./.github/actions/install-deps
 
   chromatic-deployment:
     name: Build & Deploy 🚀
@@ -36,15 +26,9 @@ jobs:
       url: ${{ steps.chromatic.outputs.storybookUrl }}
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2.4.0
-      - uses: actions/setup-node@v3
-        with:
-          cache: "pnpm"
-      - name: Cache node_modules 📁
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('pnpm-lock.yaml') }}
+      - name: Get dependencies from cache 📁
+        uses: ./.github/actions/install-deps
+
       - name: Publish Storybook to Chromatic 💭
         uses: chromaui/action@v1
         id: chromatic
@@ -59,17 +43,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v2.4.0
-      - uses: actions/setup-node@v3
-        with:
-          cache: "pnpm"
-      - name: Cache node_modules 📁
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('pnpm-lock.yaml') }}
+
+      - name: Get dependencies from cache 📁
+        uses: ./.github/actions/install-deps
+
       - name: Install Playwright 🧪
         run: pnpx playwright install --with-deps
+
       - name: Run tests 👨‍🔬👩‍🔬
         run: pnpm storybook:test
         env:

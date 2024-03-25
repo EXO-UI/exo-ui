@@ -7,36 +7,24 @@ on:
 
 jobs:
   unit-testing:
-    name: Unit tests
+    name: Unit tests 🚧
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: pnpm/action-setup@v2.4.0
-      - name: Cache node_modules 📁
-        uses: actions/cache@v3
-        id: cache-primes
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('pnpm-lock.yaml') }}
+      - uses: actions/checkout@v4
+
       - name: Install dependencies 📥
-        if: steps.cache-primes.outputs.cache-hit != 'true'
-        run: pnpm install
+        uses: ./.github/actions/install-deps
+
       - name: Run unit tests 🚧
         run: pnpm vitest --run
   linting:
-    name: Linting
+    name: Linting ✍️
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - uses: pnpm/action-setup@v2.4.0
-      - name: Cache node_modules 📁
-        uses: actions/cache@v3
-        id: cache-primes
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('pnpm-lock.yaml') }}
+      - uses: actions/checkout@v4
+
       - name: Install dependencies 📥
-        if: steps.cache-primes.outputs.cache-hit != 'true'
-        run: pnpm install
+        uses: ./.github/actions/install-deps
+
       - name: Run linting ✍️
         run: pnpm lint
