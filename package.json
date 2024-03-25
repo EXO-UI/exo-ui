@@ -27,6 +27,7 @@
     "@commitlint/cli": "^17.7.1",
     "@commitlint/config-conventional": "^17.7.0",
     "@emotion/eslint-plugin": "^11.11.0",
+    "@emotion/jest": "^11.11.0",
     "@storybook/addon-a11y": "^8.0.4",
     "@storybook/addon-essentials": "^8.0.4",
     "@storybook/addon-interactions": "^8.0.4",
