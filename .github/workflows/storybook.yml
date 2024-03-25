@@ -26,6 +26,8 @@ jobs:
       url: ${{ steps.chromatic.outputs.storybookUrl }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
       - name: Get dependencies from cache 📁
         uses: ./.github/actions/install-deps
 
