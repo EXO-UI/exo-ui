@@ -6,13 +6,14 @@ on:
   pull_request:
     paths:
       - "src/lib/**"
+      - ".storybook/**"
 
 jobs:
   setup:
     name: Setup 🔨
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v2
       - uses: actions/setup-node@v3
         with:
@@ -34,7 +35,7 @@ jobs:
     outputs:
       url: ${{ steps.chromatic.outputs.storybookUrl }}
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v2.4.0
       - uses: actions/setup-node@v3
         with:
@@ -57,7 +58,7 @@ jobs:
     timeout-minutes: 15
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v2.4.0
       - uses: actions/setup-node@v3
         with:
