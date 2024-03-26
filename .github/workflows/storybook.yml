@@ -9,26 +9,16 @@ on:
       - ".storybook/**"
 
 jobs:
-  setup:
-    name: Setup 🔨
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-
-      - name: Install dependencies 📥
-        uses: ./.github/actions/install-deps
-
   chromatic-deployment:
     name: Build & Deploy 🚀
     runs-on: ubuntu-latest
-    needs: setup
     outputs:
       url: ${{ steps.chromatic.outputs.storybookUrl }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Get dependencies from cache 📁
+      - name: Install dependencies 📥
         uses: ./.github/actions/install-deps
 
       - name: Publish Storybook to Chromatic 💭
@@ -40,7 +30,7 @@ jobs:
 
   storybook-tests-runner:
     name: Storybook tests runner 🧪
-    needs: [setup, chromatic-deployment]
+    needs: [chromatic-deployment]
     timeout-minutes: 15
     runs-on: ubuntu-latest
     steps:
@@ -50,7 +40,8 @@ jobs:
         uses: ./.github/actions/install-deps
 
       - name: Install Playwright 🧪
-        run: pnpx playwright install --with-deps
+        # we only run accesibility tests, chromium is enough
+        run: pnpm exec playwright install chromium --with-deps
 
       - name: Run tests 👨‍🔬👩‍🔬
         run: pnpm storybook:test
