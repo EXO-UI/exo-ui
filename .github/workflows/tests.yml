@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install dependencies 📥
+      - name: Setup pnpm and get dependencies 📁
         uses: ./.github/actions/install-deps
 
       - name: Run unit tests 🚧
@@ -23,7 +23,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install dependencies 📥
+      - name: Setup pnpm and get dependencies 📁
         uses: ./.github/actions/install-deps
 
       - name: Run linting ✍️
