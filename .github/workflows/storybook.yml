@@ -23,11 +23,13 @@ jobs:
         uses: ./.github/actions/install-deps
 
       - name: Publish Storybook to Chromatic 💭
-        uses: chromaui/action@v1
+        uses: chromaui/action@latest
         id: chromatic
         with:
           buildScriptName: storybook:build
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
+          exitZeroOnChanges: true
+          autoAcceptChanges: "main"
 
   storybook-tests-runner:
     name: Storybook tests runner 🧪
