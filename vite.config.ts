@@ -23,7 +23,7 @@ export default defineConfig({
       formats: ["cjs", "es", "iife", "umd"],
     },
     rollupOptions: {
-      external: ["react", "react-dom"],
+      external: ["react", "react-dom", "./gen/*"],
       output: {
         globals: {
           react: "React",
@@ -36,6 +36,7 @@ export default defineConfig({
     globals: true,
     environment: "jsdom",
     setupFiles: ["./src/tests/setup.ts"],
+    include: ["src/**/*.test.ts", "src/**/*.test.tsx"],
   },
   resolve: {
     alias: {
